@@ -1,0 +1,17 @@
+.button {
+    width: 5rem;
+    height: 8rem;
+    margin: -8.5rem -4.5rem;
+    float:right;
+    background-color: rgb(46, 126, 201);
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: white;
+    color: rgb(46, 126, 201);
+}
