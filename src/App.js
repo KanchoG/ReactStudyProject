@@ -25,7 +25,6 @@ function App() {
     description: "",
   });
 
-  console.log("test");
 
   // const userDoc = doc(db, "users", "ofeglPRFhU5wqPNWKAmO");
   // const test = async () => {
