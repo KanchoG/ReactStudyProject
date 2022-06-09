@@ -1,7 +1,19 @@
 import Button from "../UI/Button";
 import classes from "./JobList.module.css";
+import { db } from "../../../firebese-config";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
-const JobList = (props) => {
+const JobList = () => {
+  const [jobs, setJobs] = useState([]);
+  const userCollectionRef = collection(db, "jobs");
+  const getUsers = async () => {
+    const data = await getDocs(userCollectionRef);
+    setJobs(data.docs.map((job) => ({ ...job.data(), id: job.id })));
+  };
+  useEffect(() => {
+    getUsers();
+  }, []);
   return (
     <div className={classes.body}>
       <table className={classes.table}>
@@ -16,7 +28,7 @@ const JobList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.data.map((job) => (
+          {jobs.map((job) => (
             <tr className={classes.rows} key={job.id}>
               <td>{job.department}</td>
               <td>{job.position}</td>

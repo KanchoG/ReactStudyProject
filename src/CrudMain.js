@@ -11,7 +11,6 @@ import Header from "./components/Layout/Header";
 import AddNewUser from "./components/UsersAPI/Users/AddNewUser";
 import UsersList from "./components/UsersAPI/Users/UsersList";
 import { db } from "./firebese-config";
-import MenuBar from "./components/Layout/MenuBar";
 import GridCard from "./components/Layout/GridCard"
 
 const CrudMain = () => {

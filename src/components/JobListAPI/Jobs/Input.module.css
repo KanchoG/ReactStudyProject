@@ -1,0 +1,35 @@
+.input label {
+  color: rgb(46, 126, 201, 0.9);
+  font-weight: bold;
+  margin: 0.25rem 0 0.25rem 0.5rem;
+  display: inline;
+}
+.error {
+  display: none;
+  margin-left: 1rem;
+  font-weight: bold;
+  color: red;
+}
+.input input {
+  display: block;
+  background-color: rgba(46, 126, 201, 0.3);
+  border-radius: 3px;
+  border: 1px solid rgb(46, 126, 201, 0.9);
+  width: 20%;
+  margin: 0.25rem 0 0.25rem 0.5rem;
+}
+.input input:focus {
+  border: none;
+  background-color: white;
+}
+.input.invalid label {
+  color: red;
+}
+.input.invalid input {
+  background-color: rgba(255, 0, 0, 0.4);
+  border: 1px solid rgb(255, 0, 0);
+}
+
+.error.invalid {
+    display: inline;
+}

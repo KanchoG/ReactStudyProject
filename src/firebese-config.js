@@ -3,21 +3,23 @@ import { getFirestore } from "firebase/firestore";
 // import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA1Ekd_ZDuwdRndmqB1swk3AIaBoKP0OUg",
 
-  authDomain: "react-project-eb6b7.firebaseapp.com",
+  apiKey: "AIzaSyDI36BeH14ajIFHrNrsVZ_3PylBdKZfoxw",
 
-  projectId: "react-project-eb6b7",
+  authDomain: "react-http-aca73.firebaseapp.com",
 
-  storageBucket: "react-project-eb6b7.appspot.com",
+  databaseURL: "https://react-http-aca73-default-rtdb.europe-west1.firebasedatabase.app",
 
-  messagingSenderId: "536031748177",
+  projectId: "react-http-aca73",
 
-  appId: "1:536031748177:web:7291d032c12b836d975870",
+  storageBucket: "react-http-aca73.appspot.com",
 
-  measurementId: "G-RGTV1GL2H6"
+  messagingSenderId: "23545611946",
+
+  appId: "1:23545611946:web:75b0296627e999ef2172d3"
 
 };
+
 
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
