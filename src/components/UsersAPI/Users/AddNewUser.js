@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import classes from "./AddNewUser.module.css";
-import Modal from "../UI/Modal";
+import Modal from "../../Layout/Modal";
 
 const AddNewUser = (props) => {
   const [nameIsTouched, setNameIsTouched] = useState(false);

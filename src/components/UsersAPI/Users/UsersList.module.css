@@ -1,4 +1,5 @@
 .users {
+  grid-area: 2/2/span 1/span 1;
   width: 50%;
   margin: 0 auto;
   color: white;

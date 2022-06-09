@@ -1,0 +1,37 @@
+.body {
+  grid-area: 2/2/span 1/span 1;
+  width: 90%;
+  height: 100%;
+}
+.table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.header {
+  height: 3rem;
+  color: white;
+  background-color: rgb(46, 126, 201, 0.9);
+  border: 1px solid rgb(46, 126, 201, 0.9);
+}
+.th1 {
+  width: 40%;
+}
+
+.rows {
+  height: 2rem;
+  font-weight: bold;
+  background-color: rgba(40, 115, 185, 0.1);
+}
+.rows td {
+  padding: 0.5rem;
+  border: 1px solid rgba(46, 126, 201, 0.9);
+}
+.rows:nth-child(odd) {
+  background-color: rgb(46, 126, 201, 0.3);
+}
+.rows:hover {
+  background-color: rgba(46, 126, 201, 0.7);
+}
