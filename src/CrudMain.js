@@ -7,14 +7,14 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import Header from "./components/Layout/Header";
 import AddNewUser from "./components/UsersAPI/Users/AddNewUser";
 import UsersList from "./components/UsersAPI/Users/UsersList";
 import { db } from "./firebese-config";
-import GridCard from "./components/Layout/GridCard"
+import GridCard from "./components/Layout/GridCard";
+import AddButon from "./components/UsersAPI/UI/AddButton";
 
-const CrudMain = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+const CrudMain = (props) => {
+  const [modalIsOpen, setModalIsOpen] = useState(props.state);
   const [addingUser, setAddingUser] = useState(true);
   const [users, setUsers] = useState([]);
   const userCollectionRef = collection(db, "users");
@@ -87,7 +87,6 @@ const CrudMain = () => {
 
   return (
     <GridCard>
-      <Header onOpenModal={openModalHandler} />
       {modalIsOpen && addingUser && (
         <AddNewUser
           onClose={closeModalHandler}
@@ -104,6 +103,7 @@ const CrudMain = () => {
           button="Edit"
         />
       )}
+      <AddButon onOpen={openModalHandler} />
       <UsersList
         usersData={users}
         onClose={closeModalHandler}

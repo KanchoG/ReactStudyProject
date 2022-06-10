@@ -1,6 +1,4 @@
-import GridCard from "./components/Layout/GridCard";
-import MenuBar from "./components/Layout/MenuBar";
-import Header from "./components/Layout/Header";
+import { NavLink } from "react-router-dom";
 import JobList from "./components/JobListAPI/Jobs/JobList";
 import { Fragment } from "react";
 

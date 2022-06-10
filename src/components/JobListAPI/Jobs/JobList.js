@@ -4,6 +4,7 @@ import { db } from "../../../firebese-config";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -22,10 +23,11 @@ const JobList = () => {
     getUsers();
   };
   const editUserHandler = (data) => {
-    history.push({ pathname: "/addjob", state: data });
+    history.push({ pathname: "/crudetwo/addjob", state: data });
   };
   return (
     <div className={classes.body}>
+      
       <table className={classes.table}>
         <thead>
           <tr className={classes.header}>
@@ -56,6 +58,7 @@ const JobList = () => {
           ))}
         </tbody>
       </table>
+      <NavLink to="/crudetwo/addjob" className={classes.link}>+</NavLink>
     </div>
   );
 };

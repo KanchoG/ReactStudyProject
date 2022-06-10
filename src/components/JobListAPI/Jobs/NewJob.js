@@ -94,6 +94,9 @@ const NewJob = () => {
     await updateDoc(userDoc, updatedJob);
     history.push("/crudtwo");
   };
+  const redirectHandler = () => {
+    history.push("/crudtwo");
+  }
 
   return (
     <form
@@ -144,6 +147,7 @@ const NewJob = () => {
         value={employedTo}
       />
       <button type="submit">{location.state ? "Edit" : "Submit"}</button>
+      <button type="button" onClick={redirectHandler}>Back</button>
     </form>
   );
 };

@@ -10,9 +10,6 @@ const MenuBar = () => {
       <NavLink activeClassName={classes.active} to="/crudtwo">
         Jobs
       </NavLink>
-      <NavLink activeClassName={classes.active} to="/addjob">
-        New Job
-      </NavLink>
     </div>
   );
 };
