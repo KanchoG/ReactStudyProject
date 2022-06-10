@@ -20,9 +20,15 @@
   text-decoration: none;
 }
 .menu a:hover,
-.menu a:active,
+
 .menu a.active {
   background-color: rgb(255, 255, 255);
   color: rgb(46, 126, 201, 0.9);
+  cursor: pointer;
+}
+
+.menu a:active{
+  background-color: rgba(46, 126, 201, 0);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }

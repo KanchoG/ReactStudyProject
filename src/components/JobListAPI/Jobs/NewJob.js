@@ -1,16 +1,35 @@
 import classes from "./NewJob.module.css";
 import Input from "./Input";
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebese-config";
+import { useHistory, useLocation } from "react-router-dom";
 
 const NewJob = () => {
-  const [department, setDepartment] = useState("");
-  const [position, setPosition] = useState("");
-  const [salary, setSalary] = useState("");
-  const [employedOn, setEmployedOn] = useState("");
-  const [employedTo, setEmployedTo] = useState("");
+  let valueData = {
+    department: "",
+    position: "",
+    salary: "",
+    employedOn: "",
+    employedTo: "",
+  };
+  const location = useLocation();
+  if (location.state) {
+    valueData = {
+      department: location.state.department,
+      position: location.state.position,
+      salary: location.state.salary,
+      employedOn: location.state.employedOn,
+      employedTo: location.state.employedTo,
+    };
+  }
+  const [department, setDepartment] = useState(valueData.department);
+  const [position, setPosition] = useState(valueData.position);
+  const [salary, setSalary] = useState(valueData.salary);
+  const [employedOn, setEmployedOn] = useState(valueData.employedOn);
+  const [employedTo, setEmployedTo] = useState(valueData.employedTo);
   const jobCollectionRef = collection(db, "jobs");
+  const history = useHistory();
 
   const depInputHandeler = (data) => {
     setDepartment(data);
@@ -47,14 +66,40 @@ const NewJob = () => {
       salary.trim().length < 1 ||
       startDate.getTime() > endDate.getTime()
     ) {
-      console.log(startDate.getTime() < endDate.getTime());
       alert("Some of the data is not correct");
       return;
     }
     newDataHandler();
+    history.push("/crudtwo");
   };
+  const editUserHandler = async (event) => {
+    event.preventDefault();
+    const userDoc = doc(db, "jobs", location.state.id);
+    const updatedJob = {
+      department,
+      position,
+      salary,
+      employedOn,
+      employedTo,
+    };
+    if (
+      department.trim().length < 1 ||
+      position.trim().length < 1 ||
+      salary.trim().length < 1 ||
+      startDate.getTime() > endDate.getTime()
+    ) {
+      alert("Some of the data is not correct");
+      return;
+    }
+    await updateDoc(userDoc, updatedJob);
+    history.push("/crudtwo");
+  };
+
   return (
-    <form className={classes.form} onSubmit={submitDataHandler}>
+    <form
+      className={classes.form}
+      onSubmit={location.state ? editUserHandler : submitDataHandler}
+    >
       <Input
         type="text"
         id="department"
@@ -98,7 +143,7 @@ const NewJob = () => {
         message="Please add correct date"
         value={employedTo}
       />
-      <button type="submit">Submit</button>
+      <button type="submit">{location.state ? "Edit" : "Submit"}</button>
     </form>
   );
 };

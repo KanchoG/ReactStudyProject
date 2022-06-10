@@ -1,12 +1,14 @@
 import Button from "../UI/Button";
 import classes from "./JobList.module.css";
 import { db } from "../../../firebese-config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const userCollectionRef = collection(db, "jobs");
+  const history = useHistory();
   const getUsers = async () => {
     const data = await getDocs(userCollectionRef);
     setJobs(data.docs.map((job) => ({ ...job.data(), id: job.id })));
@@ -14,6 +16,14 @@ const JobList = () => {
   useEffect(() => {
     getUsers();
   }, []);
+  const deleteUserHandler = async (id) => {
+    const userDoc = doc(db, "jobs", id);
+    await deleteDoc(userDoc);
+    getUsers();
+  };
+  const editUserHandler = (data) => {
+    history.push({ pathname: "/addjob", state: data });
+  };
   return (
     <div className={classes.body}>
       <table className={classes.table}>
@@ -36,8 +46,11 @@ const JobList = () => {
               <td>{job.validFrom}</td>
               <td>{job.validTo}</td>
               <td className={classes.buttons}>
-                <Button action="Edit" />
-                <Button action="Delete" />
+                <Button onManage={() => editUserHandler(job)} action="Edit" />
+                <Button
+                  onManage={() => deleteUserHandler(job.id)}
+                  action="Delete"
+                />
               </td>
             </tr>
           ))}
