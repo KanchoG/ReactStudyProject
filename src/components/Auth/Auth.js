@@ -69,7 +69,10 @@ const Auth = () => {
           }
         })
         .then((data) => {
-          authCtx.login(data.idToken);
+          const timeStamp = new Date(
+            new Date().getTime() + +data.expiresIn * 1000
+          );
+          authCtx.login(data.idToken, timeStamp.toISOString());
           history.replace("/crudtwo");
         })
         .catch((err) => {
