@@ -12,11 +12,13 @@ import UsersList from "./components/UsersAPI/Users/UsersList";
 import { db } from "./firebese-config";
 import GridCard from "./components/Layout/GridCard";
 import AddButon from "./components/UsersAPI/UI/AddButton";
+import LoadingSpinner from "./components/UsersAPI/UI/LoadingSpinner";
 
 const CrudMain = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(props.state);
   const [addingUser, setAddingUser] = useState(true);
   const [users, setUsers] = useState([]);
+  const [isLodaing, setIsLoading] = useState(false);
   const userCollectionRef = collection(db, "users");
   const [person, setPerson] = useState({
     name: "",
@@ -27,9 +29,11 @@ const CrudMain = (props) => {
   });
 
   const getUsers = async () => {
+    setIsLoading(true);
     const data = await getDocs(userCollectionRef);
 
     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    setIsLoading(false);
   };
   useEffect(() => {
     getUsers();
@@ -87,7 +91,7 @@ const CrudMain = (props) => {
 
   return (
     <GridCard>
-      {modalIsOpen && addingUser && (
+      {modalIsOpen && addingUser && !isLodaing && (
         <AddNewUser
           onClose={closeModalHandler}
           onManageUser={newUserHandler}
@@ -95,7 +99,7 @@ const CrudMain = (props) => {
           button="Add"
         />
       )}
-      {modalIsOpen && !addingUser && (
+      {modalIsOpen && !addingUser && !isLodaing && (
         <AddNewUser
           onClose={closeModalHandler}
           onManageUser={editUserHandler}
@@ -110,6 +114,7 @@ const CrudMain = (props) => {
         onDelete={deleteUserHandler}
         onOpen={editModalHandler}
       />
+      {/* <LoadingSpinner /> */}
     </GridCard>
   );
 };

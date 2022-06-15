@@ -1,0 +1,12 @@
+.spinner {
+  grid-area: 2/2 / span 1 / span 1;
+  width: 50%;
+  margin: 0 auto;
+  color: rgb(46, 126, 201);
+  font-weight: bold;
+  text-align: center;
+}
+.spinner img {
+    width: 30%;
+    height: auto;
+}
