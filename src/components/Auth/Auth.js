@@ -2,6 +2,7 @@ import classes from "./Auth.module.css";
 import { useState, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import { useHistory } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 const Auth = () => {
   const [mailInput, setMailInput] = useState("");
@@ -73,6 +74,7 @@ const Auth = () => {
             new Date().getTime() + +data.expiresIn * 1000
           );
           authCtx.login(data.idToken, timeStamp.toISOString());
+          authCtx.userSet(data.email);
           history.replace("/crudtwo");
         })
         .catch((err) => {
@@ -88,45 +90,51 @@ const Auth = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <h1>{accountCreate ? "Sign Up" : "Login"}</h1>
-      <form onSubmit={submitDataHandler}>
-        <div
-          className={`${classes.form} ${
-            mailIsTouched && !mailValidation(mailInput) ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="mail">E-mail</label>
-          <span> Please enter a correct e-mail!</span>
-          <input
-            type="email"
-            id="mail"
-            onChange={mailChangeHandler}
-            onBlur={mailBlurHandler}
-          />
-        </div>
-        <div
-          className={`${classes.form} ${
-            passIsTouched && passInput.trim().length < 6 ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="pass">Password</label>
-          <span> Please enter a correct password!</span>
-          <input
-            type="password"
-            id="pass"
-            onChange={passChangeHandler}
-            onBlur={passBlurHandler}
-          />
-        </div>
-        <div className={classes.form}>
-          <button type="submit">{accountCreate ? "Sign Up" : "Sign In"}</button>
-          <button type="button" onClick={signUpHandler}>
-            {accountCreate ? "Back" : "Register"}
-          </button>
-        </div>
-      </form>
-    </div>
+    <CSSTransition in={true} timeout={300} classNames="trigger">
+      <div className={classes.container}>
+        <h1>{accountCreate ? "Sign Up" : "Login"}</h1>
+        <form onSubmit={submitDataHandler}>
+          <div
+            className={`${classes.form} ${
+              mailIsTouched && !mailValidation(mailInput) ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="mail">E-mail</label>
+            <span> Please enter a correct e-mail!</span>
+            <input
+              type="email"
+              id="mail"
+              onChange={mailChangeHandler}
+              onBlur={mailBlurHandler}
+            />
+          </div>
+          <div
+            className={`${classes.form} ${
+              passIsTouched && passInput.trim().length < 6
+                ? classes.invalid
+                : ""
+            }`}
+          >
+            <label htmlFor="pass">Password</label>
+            <span> Please enter a correct password!</span>
+            <input
+              type="password"
+              id="pass"
+              onChange={passChangeHandler}
+              onBlur={passBlurHandler}
+            />
+          </div>
+          <div className={classes.form}>
+            <button type="submit">
+              {accountCreate ? "Sign Up" : "Sign In"}
+            </button>
+            <button type="button" onClick={signUpHandler}>
+              {accountCreate ? "Back" : "Register"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </CSSTransition>
   );
 };
 

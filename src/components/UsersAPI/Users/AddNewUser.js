@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import classes from "./AddNewUser.module.css";
 import Modal from "../../Layout/Modal";
 

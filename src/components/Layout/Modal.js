@@ -13,8 +13,14 @@ const ModalOverlay = (props) => {
 const Modal = (props) => {
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, document.getElementById("backdrop"))}
-      {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, document.getElementById("overlay"))}
+      {ReactDOM.createPortal(
+        <ModalOverlay>{props.children}</ModalOverlay>,
+        document.getElementById("overlay")
+      )}
+      {ReactDOM.createPortal(
+        <Backdrop onClose={props.onClose} />,
+        document.getElementById("backdrop")
+      )}
     </Fragment>
   );
 };

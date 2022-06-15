@@ -1,0 +1,46 @@
+.try-enter-active {
+  animation: openModal 300ms ease-out forwards;
+}
+
+.try-exit-active {
+  animation: closeModal 300ms ease-out forwards;
+}
+
+@keyframes openModal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeModal {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(60%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+.trigger-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.trigger-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}

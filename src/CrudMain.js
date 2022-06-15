@@ -13,6 +13,8 @@ import { db } from "./firebese-config";
 import GridCard from "./components/Layout/GridCard";
 import AddButon from "./components/UsersAPI/UI/AddButton";
 import LoadingSpinner from "./components/UsersAPI/UI/LoadingSpinner";
+import { CSSTransition } from "react-transition-group";
+import "./CrudMain.css";
 
 const CrudMain = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(props.state);
@@ -91,30 +93,37 @@ const CrudMain = (props) => {
 
   return (
     <GridCard>
-      {modalIsOpen && addingUser && !isLodaing && (
+      <CSSTransition
+        in={modalIsOpen}
+        timeout={300}
+        classNames="try"
+        unmountOnExit
+      >
         <AddNewUser
           onClose={closeModalHandler}
-          onManageUser={newUserHandler}
+          onManageUser={addingUser ? newUserHandler : editUserHandler}
           personData={person}
-          button="Add"
+          button={addingUser ? "Add" : "Edit"}
+          state={modalIsOpen}
         />
-      )}
-      {modalIsOpen && !addingUser && !isLodaing && (
-        <AddNewUser
+      </CSSTransition>
+      {!isLodaing && <AddButon onOpen={openModalHandler} />}
+      <CSSTransition
+        in={!isLodaing}
+        timeout={300}
+        classNames="trigger"
+        mountOnEnter
+        unmountOnExit
+      >
+        <UsersList
+          usersData={users}
           onClose={closeModalHandler}
-          onManageUser={editUserHandler}
-          personData={person}
-          button="Edit"
+          onDelete={deleteUserHandler}
+          onOpen={editModalHandler}
         />
-      )}
-      <AddButon onOpen={openModalHandler} />
-      <UsersList
-        usersData={users}
-        onClose={closeModalHandler}
-        onDelete={deleteUserHandler}
-        onOpen={editModalHandler}
-      />
-      {/* <LoadingSpinner /> */}
+      </CSSTransition>
+
+      {isLodaing && <LoadingSpinner />}
     </GridCard>
   );
 };

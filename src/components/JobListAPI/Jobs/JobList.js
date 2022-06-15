@@ -5,7 +5,7 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import LoadingSpinner from "../../UsersAPI/UI/LoadingSpinner"
+import LoadingSpinner from "../../UsersAPI/UI/LoadingSpinner";
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +45,7 @@ const JobList = () => {
             </thead>
             <tbody>
               {jobs.map((job) => (
-                <tr className={classes.rows} key={job.id}>
+                <tr className={classes.rows}>
                   <td>{job.department}</td>
                   <td>{job.position}</td>
                   <td>{job.salary}</td>
@@ -73,7 +73,7 @@ const JobList = () => {
       </div>
     );
   } else {
-    <LoadingSpinner/>
+    <LoadingSpinner />;
   }
 };
 

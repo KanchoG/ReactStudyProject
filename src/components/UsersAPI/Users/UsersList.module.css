@@ -1,5 +1,5 @@
 .users {
-  grid-area: 2/2/span 1/span 1;
+  grid-area: 2/2 / span 1 / span 1;
   width: 50%;
   margin: 0 auto;
   color: white;
@@ -13,10 +13,20 @@
 .users ul {
   list-style: none;
   padding: 0;
-  margin:0;
+  margin: 0;
 }
 
 .listContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto auto auto auto auto;
+  padding: 1rem;
+  margin: 0.5rem 1rem;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
+  background-color: rgb(46, 126, 201);
+}
+.listContainer1 {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto auto auto auto auto auto;
@@ -54,3 +64,4 @@
   color: rgb(46, 126, 201);
   background-color: white;
 }
+

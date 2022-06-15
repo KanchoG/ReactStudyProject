@@ -24,7 +24,11 @@ const Header = () => {
         )}
         {isLoggedIn && (
           <li>
-            <button onClick={logoutHandler}>Logout</button>
+            <button onClick={logoutHandler}>
+              Logout 
+            </button>
+            <p className={classes.user}>{authCtx.userName}</p>
+            
           </li>
         )}
 

@@ -7,7 +7,7 @@ const UsersList = (props) => {
       <ul>
         {props.usersData.length !== 0 &&
           props.usersData.map((person) => (
-            <li className={classes.mainContainer} key={person.id}>
+            <li key={person.id} className={classes.mainContainer}>
               <div
                 className={classes.listContainer}
                 onClick={() => {
@@ -29,7 +29,7 @@ const UsersList = (props) => {
           ))}
         {props.usersData.length === 0 && (
           <li className={classes.mainContainer}>
-            <div className={classes.listContainer}>No users found.</div>
+            <div className={classes.listContainer1}>No users found.</div>
           </li>
         )}
       </ul>
