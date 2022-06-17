@@ -9,6 +9,7 @@ import Auth from "./components/Auth/Auth";
 import AuthContext from "./store/auth-context";
 import Manage from "./components/Auth/Manage";
 import { useContext } from "react";
+import MenuBarMobile from "./components/Layout/MenuBarMobile";
 
 const App = () => {
   const authCtx = useContext(AuthContext);
@@ -16,6 +17,7 @@ const App = () => {
     <GridCard>
       <Header />
       <MenuBar />
+      <MenuBarMobile />
       {!authCtx.isLoggedIn && (
         <Route path="/" exact>
           <Redirect to="/login" />

@@ -48,3 +48,12 @@
   color: white;
   background-color: rgba(46, 126, 201);
 }
+@media (max-width: 750px) {
+  .container{
+    margin: 1.5rem;
+    width: 90%;
+  }
+  .form input {
+    width: 100%;
+  }
+}

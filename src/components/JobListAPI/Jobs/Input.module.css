@@ -31,5 +31,15 @@
 }
 
 .error.invalid {
-    display: inline;
+  display: inline;
+}
+
+@media (max-width: 750px) {
+  
+  .input input {
+    margin: 0 5px;
+    width: 90%;
+  }
+
+  
 }

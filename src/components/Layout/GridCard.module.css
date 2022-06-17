@@ -1,5 +1,11 @@
 .mainBody {
+    min-height: 1vh;
     display: grid;
     grid-template-columns: 10% 80% 10%;
     grid-template-rows: 20% 80%;
+}
+@media (max-width: 750px) {
+    .mainBody {
+        display: block;
+    }
 }

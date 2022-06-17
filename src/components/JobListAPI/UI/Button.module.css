@@ -18,3 +18,11 @@
     background-color: rgb(46, 126, 201, 0.9);
     color: rgb(255, 255, 255);
 }
+@media(max-width:750px) {
+    .button {
+        display: block;
+        width: 100%;
+        margin: 0.1rem auto;
+    }
+    
+}

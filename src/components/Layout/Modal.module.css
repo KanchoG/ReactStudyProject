@@ -21,10 +21,17 @@
   transition: all 0.3s ease-out;
 }
 .open {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 .close {
-    opacity: 0;
-    transform: translateY(-100%);
+  opacity: 0;
+  transform: translateY(-100%);
+}
+@media (max-width: 750px) {
+  .overlay {
+    width: 80%;
+    top: 10%;
+    left: 6%;
+  }
 }

@@ -14,3 +14,8 @@
   background-color: white;
   color: rgb(46, 126, 201);
 }
+@media (max-width:750px) {
+  .button {
+    width:100%;
+  }
+}

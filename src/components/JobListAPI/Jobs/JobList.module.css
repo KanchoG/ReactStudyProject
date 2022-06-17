@@ -76,3 +76,13 @@
   background-color: rgb(46, 126, 201);
   color: white;
 }
+
+@media (max-width: 750px) {
+  .table {
+    font-size: 0.72rem;
+    margin: 2rem 0.25rem;
+  }
+  .link {
+    margin: -2rem 0rem;
+  }
+}
